@@ -13,3 +13,6 @@ grep "A temporary password" /var/log/mysqld.log
 curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
 source .bash_profile
 tiup playground --tiflash 1 > 'tidb.log' 2>&1 &
+TIDB_PID=$!
+echo "tiup playground (PID: ${TIDB_PID}) started"
+echo ${TIDB_PID} > tidb.pid
